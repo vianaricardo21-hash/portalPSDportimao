@@ -4,66 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal PSD Portimão</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: #007bff; color: white; padding: 10px 20px; text-align: center; }
-        .container { padding: 20px; }
-        h1 { margin: 0; }
-        form { margin-top: 20px; }
-        input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 5px 0; }
-        button { padding: 10px 20px; }
-        .admin-panel { background: #f8f9fa; padding: 20px; margin-top: 20px; border-radius: 5px; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
     <h1>Portal PSD Portimão</h1>
-</header>
-<div class="container">
-    <div class="login">
-        <h2>Login</h2>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+    <div id="documentContainer">
+        <!-- Document tracking with ID -->
+        <div class="document" data-id="1">
+            <h2>Document Title</h2>
+            <p>Document content...</p>
+            <button class="delete-document">Delete Document</button>
+        </div>
+        
+        <!-- Comments section -->
+        <div class="comments">
+            <h3>Comments</h3>
+            <div class="comment" data-author="user123">
+                <p>This is a comment from user123.</p>
+                <button class="delete-comment">Delete</button>
+            </div>
+            <div class="comment" data-author="admin">
+                <p>This is a comment from admin.</p>
+                <button class="delete-comment">Delete</button>
+            </div>
+        </div>
     </div>
-    <div class="admin-panel">
-        <h2>Admin Panel</h2>
-        <form>
-            <input type="text" placeholder="Document Title" required>
-            <input type="text" placeholder="SharePoint Link" required>
-            <button type="submit">Publish Document</button>
-        </form>
-        <h3>Documents</h3>
-        <ul>
-            <li><a href="#">Document 1</a></li>
-            <li><a href="#">Document 2</a></li>
-        </ul>
-    </div>
-    <div class="submission">
-        <h2>Analysis Submission</h2>
-        <form>
-            <input type="text" placeholder="Analysis Title" required>
-            <textarea placeholder="Analysis Details" required></textarea>
-            <button type="submit">Submit Analysis</button>
-        </form>
-    </div>
-</div>
-<script>
-    // JavaScript code for handling login, publishing documents, and submissions
-    document.querySelector('.login form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Logged in!'); // Add actual login logic
-    });
-    document.querySelector('.admin-panel form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Document published!'); // Add actual publishing logic
-    });
-    document.querySelector('.submission form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Analysis submitted!'); // Add actual submission logic
-    });
-</script>
+    <script>
+        // Confirmation before delete action
+        document.querySelectorAll('.delete-document').forEach(button => {
+            button.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this document?')) {
+                    // Delete document functionality
+                }
+            });
+        });
+
+        document.querySelectorAll('.delete-comment').forEach(button => {
+            button.addEventListener('click', function() {
+                const commentAuthor = this.closest('.comment').dataset.author;
+                if (confirm(`Are you sure you want to delete your comment${commentAuthor !== 'admin' ? ' (if you are the author)' : ''}?`)) {
+                    // Delete comment functionality
+                }
+            });
+        });
+    </script>
 </body>
 </html>
