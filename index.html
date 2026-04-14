@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal PSD Portimão</title>
+    <script src="https://keyvalue.xyz/remoteStorage.js"></script>
+    <script>
+        // Authentication and Document Management
+        async function authenticate() {
+            // Implement your authentication logic here
+            console.log('User authenticated');
+        }
+
+        async function publishDocument() {
+            // Logic to publish documents to SharePoint
+            console.log('Document published');
+        }
+
+        async function displayDocuments() {
+            // Logic to fetch and display documents
+            console.log('Documents displayed');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Portal PSD Portimão</h1>
+        <button onclick="authenticate()">Login</button>
+    </header>
+    <main>
+        <section id="admin-section">
+            <h2>Admin Section</h2>
+            <button onclick="publishDocument()">Publish Document</button>
+        </section>
+        <section id="document-list">
+            <h2>Document List</h2>
+            <ul id="list"></ul>
+        </section>
+    </main>
+</body>
+</html>
